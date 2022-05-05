@@ -20,13 +20,13 @@ public class ItemDatabase : MonoBehaviour
     {
         items = new List<Item>()
         {
-            new Item(1, "Sword", "A melee weapon to cut yourself you suicidal fuck!",
+            new Item(1, "Sword", "A melee weapon. Please do not cut yourself",
             new Dictionary<string, int> {
                 { "Damage", 15 },
                 { "Speed", 7 }
             }),
 
-            new Item(2, "Pistol", "A small ranged weapon or sidearm to shoot yourself or a bunch of school kids.",
+            new Item(2, "Pistol", "A small ranged weapon or sidearm. Do NOT shoot your friends!!!",
             new Dictionary<string, int> {
                 { "Damage", 50 },
                 { "Speed", 15 }
