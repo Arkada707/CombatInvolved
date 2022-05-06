@@ -8,7 +8,15 @@ public class EnemyAI : MonoBehaviour
     private Transform target;
     private Animator myAnim;
     private Rigidbody2D rb;
+    
     private float canAttack;
+    [Header("Attack")]
+    
+    [Header("Movement")]
+
+    [Header("Health")]
+    private float health;
+    [SerializeField] private float maxHealth = 100f;
     [SerializeField]
     private float attackDamage = 10f;
     [SerializeField]
@@ -23,6 +31,18 @@ public class EnemyAI : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         target = FindObjectOfType<PlayerController>().transform;
+        health = maxHealth;
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        Debug.Log("Enemy HeaLth: " + health);
+        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

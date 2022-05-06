@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Camera cam;
 
     private Vector2 moveDirection;
     private float health = 0f;
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField]
+    private float maxHealth = 100f;
+
 
     Vector2 mousePos;
     Vector2 movement;
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
         else if (health <= 0f)
         {
             health = 0f;
-            Debug.Log("Player Respawn");
+            Destroy(gameObject);
         }
     }
 
@@ -51,8 +53,12 @@ public class PlayerController : MonoBehaviour
 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
+        Vector2 lookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
         
     }
 
+    
    
 }
