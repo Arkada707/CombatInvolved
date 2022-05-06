@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
     private float health = 0f;
     [SerializeField]
     private float maxHealth = 100f;
+    [SerializeField]
+    private float attackDamage = 10f;
+    [SerializeField]
+    private float attackSpeed = 1f;
+    private float canAttack;
 
 
     Vector2 mousePos;
@@ -37,6 +42,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -59,6 +65,19 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    
-   
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Powerup")
+        {
+            Debug.Log("Speed Increased");
+            moveSpeed += 10f;
+            Destroy(gameObject);
+
+        }
+
+    }
+
+
+
 }

@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [HideInInspector] public float bulletForce = 20f;
+
     public float bulletDamage = 10f;
 
     private void Start()
@@ -25,6 +26,8 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Enemy Attacked");
             EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
+
+           
             enemy.TakeDamage(bulletDamage);
           
         }
